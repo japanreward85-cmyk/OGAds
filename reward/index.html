@@ -1,300 +1,493 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  import React, { useState, useEffect } from 'react';
-import { 
-  Crown, 
-  Shield, 
-  Zap, 
-  Users, 
-  Star, 
-  Clock, 
-  CheckCircle, 
-  ArrowRight,
-  Lock,
-  Trophy,
-  Target,
-  Gift
-} from 'lucide-react';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clash Royale CPA Marketing Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-30px,0);
+            }
+            70% {
+                transform: translate3d(0,-15px,0);
+            }
+            90% {
+                transform: translate3d(0,-4px,0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .floating-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fbbf24;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: pulse 2s infinite;
+        }
+        
+        .bg-gradient-text {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .hover-translate:hover {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-900">
+    <!-- Hero Section -->
+    <section 
+        class="relative min-h-screen flex items-center justify-center px-4"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://i.ibb.co/m5p5j2xc/528377561-1284698856361111-1875331516786414738-n.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"
+    >
+        <!-- Floating particles effect -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none" id="particles"></div>
 
-function App() {
-  const [email, setEmail] = useState('');
-  const [timeLeft, setTimeLeft] = useState(3600); // 1 hour countdown
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission - this would typically integrate with your CPA offer
-    console.log('Email submitted:', email);
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center px-4"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://i.ibb.co/m5p5j2xc/528377561-1284698856361111-1875331516786414738-n.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        {/* Floating particles effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-yellow-400 rounded-full opacity-20 animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          {/* Clash Royale Logo */}
-          <div className="mb-8 flex justify-center">
-            <img 
-              src="https://i.ibb.co/qM8h1mYR/unnamed.png" 
-              alt="Clash Royale" 
-              className="h-24 w-auto drop-shadow-2xl animate-bounce"
-            />
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500">
-              EXCLUSIVE
-            </span>
-            <br />
-            <span className="text-blue-400">CLASH ROYALE</span>
-            <br />
-            <span className="text-red-500">SECRETS</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Unlock the <span className="text-yellow-400 font-bold">SECRET STRATEGIES</span> used by 
-            <span className="text-green-400 font-bold"> TOP 1% PLAYERS</span> to dominate every match!
-          </p>
-
-          {/* Urgency Timer */}
-          <div className="bg-red-600 text-white px-6 py-4 rounded-lg mb-8 inline-block">
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 animate-pulse" />
-              <span className="font-bold">LIMITED TIME: {formatTime(timeLeft)}</span>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <!-- Clash Royale Logo -->
+            <div class="mb-8 flex justify-center">
+                <img 
+                    src="https://i.ibb.co/qM8h1mYR/unnamed.png" 
+                    alt="Clash Royale" 
+                    class="h-24 w-auto drop-shadow-2xl animate-bounce"
+                />
             </div>
-          </div>
 
-          {/* CTA Button */}
-          <button className="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-6 px-12 rounded-full text-xl transform hover:scale-105 transition-all duration-300 shadow-2xl mb-12">
-            <span className="flex items-center gap-3">
-              <Lock className="w-6 h-6" />
-              UNLOCK SECRETS NOW
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </button>
+            <!-- Main Headline -->
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                <span class="bg-gradient-text">
+                    EXCLUSIVE
+                </span>
+                <br />
+                <span class="text-blue-400">CLASH ROYALE</span>
+                <br />
+                <span class="text-red-500">SECRETS</span>
+            </h1>
 
-          {/* Social Proof */}
-          <div className="flex justify-center items-center gap-8 text-white">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400">50,000+</div>
-              <div className="text-sm text-gray-300">Players Helped</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-400">98%</div>
-              <div className="text-sm text-gray-300">Win Rate Increase</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-400">24H</div>
-              <div className="text-sm text-gray-300">Average to Master</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What You Get Section */}
-      <section className="py-20 bg-gray-800 relative">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            What You'll <span className="text-yellow-400">UNLOCK</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Crown className="w-12 h-12 text-yellow-400" />,
-                title: "Pro Deck Builds",
-                description: "Meta-breaking deck combinations that guarantee wins against any opponent",
-                value: ""
-              },
-              {
-                icon: <Target className="w-12 h-12 text-red-400" />,
-                title: "Advanced Strategies",
-                description: "Secret timing techniques and positioning tricks used by championship players",
-                value: ""
-              },
-              {
-                icon: <Zap className="w-12 h-12 text-blue-400" />,
-                title: "Instant Counter Guide",
-                description: "Perfect counters for every card and situation - never lose again!",
-                value: ""
-              },
-              {
-                icon: <Trophy className="w-12 h-12 text-purple-400" />,
-                title: "Arena Push System",
-                description: "Step-by-step system to reach any arena in record time",
-                value: ""
-              },
-              {
-                icon: <Shield className="w-12 h-12 text-green-400" />,
-                title: "Defense Mastery",
-                description: "Unbreakable defensive patterns that frustrate any attacker",
-                value: ""
-              },
-              {
-                icon: <Gift className="w-12 h-12 text-pink-400" />,
-                title: "BONUS: Tournament Tips",
-                description: "Exclusive tournament strategies from pro players",
-                value: ""
-              }
-            ].map((item, index) => (
-              <div key={index} className="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="flex justify-between items-start mb-4">
-                  <div>{item.icon}</div>
-                  <span className="text-green-400 font-bold text-lg line-through">{item.value}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{item.description}</p>
-                <div className="mt-4 flex items-center text-green-400">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  <span className="text-sm font-semibold"></span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            Real <span className="text-green-400">Results</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Alex M.",
-                rating: 5,
-                text: "Went from Arena 10 to Master League in just 3 days using these strategies!",
-                result: "+2000 Trophies"
-              },
-              {
-                name: "Sarah K.",
-                rating: 5,
-                text: "The deck builds are insane! I haven't lost a single match in 2 weeks.",
-                result: "22 Win Streak"
-              },
-              {
-                name: "Mike R.",
-                rating: 5,
-                text: "Finally reached Champion League thanks to the tournament tips!",
-                result: "Champion Rank"
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-300 mb-4 italic">"{testimonial.text}"</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-white font-semibold">{testimonial.name}</span>
-                  <span className="text-green-400 font-bold">{testimonial.result}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Ready to <span className="text-yellow-400">DOMINATE</span>?
-          </h2>
-          
-          <p className="text-xl text-gray-300 mb-8">
-            Join thousands of players who transformed their gameplay forever
-          </p>
-
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-8">
-            <div className="flex flex-col gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="px-6 py-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-yellow-400 focus:outline-none text-lg"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-8 rounded-lg text-xl transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              >
-                GET INSTANT ACCESS
-              </button>
-            </div>
-          </form>
-
-          <div className="flex items-center justify-center gap-4 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-green-400" />
-            <span>100% Free Access</span>
-            <CheckCircle className="w-4 h-4 text-green-400" />
-            <span>No Spam Guarantee</span>
-            <CheckCircle className="w-4 h-4 text-green-400" />
-            <span>Instant Delivery</span>
-          </div>
-
-          {/* Scarcity Element */}
-          <div className="mt-8 bg-red-900 border border-red-500 rounded-lg p-4 inline-block">
-            <p className="text-red-200 font-semibold">
-              ⚠️ Limited to next 500 players only - {Math.floor(Math.random() * 100) + 50} spots remaining
+            <!-- Subheadline -->
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Unlock the <span class="text-yellow-400 font-bold">SECRET STRATEGIES</span> used by 
+                <span class="text-green-400 font-bold"> TOP 1% PLAYERS</span> to dominate every match!
             </p>
-          </div>
+
+            <!-- Urgency Timer -->
+            <div class="bg-red-600 text-white px-6 py-4 rounded-lg mb-8 inline-block">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    <span class="font-bold">LIMITED TIME: <span id="countdown">01:00:00</span></span>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <button class="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-6 px-12 rounded-full text-xl hover-scale transition-all duration-300 shadow-2xl mb-12">
+                <span class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <circle cx="12" cy="16" r="1"></circle>
+                        <path d="m7 11 0-5a5 5 0 0 1 10 0l0 5"></path>
+                    </svg>
+                    UNLOCK SECRETS NOW
+                    <svg class="w-6 h-6 hover-translate transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12,5 19,12 12,19"></polyline>
+                    </svg>
+                </span>
+            </button>
+
+            <!-- Social Proof -->
+            <div class="flex justify-center items-center gap-8 text-white">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-400">50,000+</div>
+                    <div class="text-sm text-gray-300">Players Helped</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-400">98%</div>
+                    <div class="text-sm text-gray-300">Win Rate Increase</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-400">24H</div>
+                    <div class="text-sm text-gray-300">Average to Master</div>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* Footer */}
-      <footer className="bg-black py-8 text-center text-gray-400">
+    <!-- What You Get Section -->
+    <section class="py-20 bg-gray-800 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-16">
+                What You'll <span class="text-yellow-400">UNLOCK</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg line-through">$97</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Pro Deck Builds</h3>
+                    <p class="text-gray-300 leading-relaxed">Meta-breaking deck combinations that guarantee wins against any opponent</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Instant Access</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg line-through">$67</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Advanced Strategies</h3>
+                    <p class="text-gray-300 leading-relaxed">Secret timing techniques and positioning tricks used by championship players</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Video Tutorials</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg line-through">$47</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Instant Counter Guide</h3>
+                    <p class="text-gray-300 leading-relaxed">Perfect counters for every card and situation - never lose again!</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Cheat Sheet</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                            <path d="M4 22h16"></path>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg line-through">$127</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Arena Push System</h3>
+                    <p class="text-gray-300 leading-relaxed">Step-by-step system to reach any arena in record time</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Step-by-Step Guide</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg line-through">$87</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Defense Mastery</h3>
+                    <p class="text-gray-300 leading-relaxed">Unbreakable defensive patterns that frustrate any attacker</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Defense Patterns</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 hover-scale">
+                    <div class="flex justify-between items-start mb-4">
+                        <svg class="w-12 h-12 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20,12 20,22 4,22 4,12"></polyline>
+                            <rect x="2" y="7" width="20" height="5"></rect>
+                            <line x1="12" y1="22" x2="12" y2="7"></line>
+                            <path d="m12 7 3-3H9l3 3z"></path>
+                        </svg>
+                        <span class="text-green-400 font-bold text-lg">BONUS</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tournament Tips</h3>
+                    <p class="text-gray-300 leading-relaxed">Exclusive tournament strategies from pro players</p>
+                    <div class="mt-4 flex items-center text-green-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">Pro Secrets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-16">
+                Real <span class="text-green-400">Results</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">"Went from Arena 10 to Master League in just 3 days using these strategies!"</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-white font-semibold">Alex M.</span>
+                        <span class="text-green-400 font-bold">+2000 Trophies</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">"The deck builds are insane! I haven't lost a single match in 2 weeks."</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-white font-semibold">Sarah K.</span>
+                        <span class="text-green-400 font-bold">22 Win Streak</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <div class="flex mb-4">
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300 mb-4 italic">"Finally reached Champion League thanks to the tournament tips!"</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-white font-semibold">Mike R.</span>
+                        <span class="text-green-400 font-bold">Champion Rank</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Ready to <span class="text-yellow-400">DOMINATE</span>?
+            </h2>
+            
+            <p class="text-xl text-gray-300 mb-8">
+                Join thousands of players who transformed their gameplay forever
+            </p>
+
+            <form id="emailForm" class="max-w-md mx-auto mb-8">
+                <div class="flex flex-col gap-4">
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="Enter your email address"
+                        class="px-6 py-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-yellow-400 focus:outline-none text-lg"
+                        required
+                    />
+                    <button
+                        type="submit"
+                        class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-8 rounded-lg text-xl hover-scale transition-all duration-300 shadow-2xl"
+                    >
+                        GET INSTANT ACCESS
+                    </button>
+                </div>
+            </form>
+
+            <div class="flex items-center justify-center gap-4 text-gray-400 text-sm">
+                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>100% Free Access</span>
+                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>No Spam Guarantee</span>
+                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Instant Delivery</span>
+            </div>
+
+            <!-- Scarcity Element -->
+            <div class="mt-8 bg-red-900 border border-red-500 rounded-lg p-4 inline-block">
+                <p class="text-red-200 font-semibold">
+                    ⚠️ Limited to next 500 players only - <span id="spotsLeft">73</span> spots remaining
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-gray-400">
         <p>&copy; 2025 Clash Royale Secrets. All rights reserved.</p>
-        <p className="mt-2 text-sm">This is an independent fan site and is not affiliated with Supercell.</p>
-      </footer>
-    </div>
-  );
-}
+        <p class="mt-2 text-sm">This is an independent fan site and is not affiliated with Supercell.</p>
+    </footer>
 
-export default App;
-  </body>
+    <script>
+        // Countdown Timer
+        let timeLeft = 3600; // 1 hour in seconds
+        
+        function updateCountdown() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown').textContent = formattedTime;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Form submission handler
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            
+            // Here you would integrate with your CPA offer
+            // For now, we'll just show an alert
+            alert('Thank you! Check your email for instant access to the secrets!');
+            
+            // You can replace this with your actual CPA redirect or tracking
+            console.log('Email submitted:', email);
+        });
+
+        // Spots remaining animation
+        function updateSpotsLeft() {
+            const spotsElement = document.getElementById('spotsLeft');
+            let currentSpots = parseInt(spotsElement.textContent);
+            if (currentSpots > 10) {
+                spotsElement.textContent = currentSpots - 1;
+            }
+        }
+
+        // Randomly decrease spots every 30-60 seconds
+        setInterval(updateSpotsLeft, (30 + Math.random() * 30) * 1000);
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
