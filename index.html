@@ -99,7 +99,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMTAgNSAxNSAxMCAxMCAxNSAxNSAyMCAxMCAyMCAwIDE1IDUgMTAgMCA1IDUgMCAwIDAgMTAiIGZpbGw9IiMwMDAwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
+      background-image: url('image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMTAgNSAxNSAxMCAxMCAxNSAxNSAyMCAxMCAyMCAwIDE1IDUgMTAgMCA1IDUgMCAwIDAgMTAiIGZpbGw9IiMwMDAwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
       opacity: 0.1;
       z-index: -1;
     }
@@ -168,6 +168,9 @@
       width: 60px;
       height: 60px;
       margin: 0 auto 0.8rem;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .game-title {
@@ -369,11 +372,7 @@
       <div class="games-grid">
         <!-- Game 1: GTA San Andreas -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect width="60" height="60" rx="12" fill="#123" />
-            <text x="30" y="38" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="red" text-anchor="middle">GTA</text>
-            <text x="30" y="52" font-size="10" fill="white" text-anchor="middle">San Andreas</text>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/9pQ7Kzg.png" alt="GTA San Andreas">
           <h3 class="game-title">GTA: San Andreas</h3>
           <p class="game-desc">Classic open-world action</p>
           <div class="game-rating">
@@ -386,10 +385,7 @@
 
         <!-- Game 2: Valorant Mobile -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="30,10 10,50 50,50" fill="#d32f2f"/>
-            <circle cx="30" cy="30" r="10" fill="#fff"/>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/5kR0uZm.png" alt="Valorant Mobile">
           <h3 class="game-title">Valorant Mobile</h3>
           <p class="game-desc">Tactical FPS on mobile</p>
           <div class="game-rating">
@@ -404,10 +400,7 @@
 
         <!-- Game 3: Baseball 9 -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="25" fill="#f9d784" stroke="#d4a76a" stroke-width="2"/>
-            <path d="M15 30 Q30 10 45 30 Q30 50 15 30" fill="none" stroke="#d4a76a" stroke-width="2"/>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/4jX5p0j.png" alt="Baseball 9">
           <h3 class="game-title">Baseball 9</h3>
           <p class="game-desc">Arcade baseball fun</p>
           <div class="game-rating">
@@ -420,10 +413,7 @@
 
         <!-- Game 4: NFL Mobile -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 20 L50 20 L45 40 L15 40 Z" fill="#002169"/>
-            <text x="30" y="35" font-size="10" font-weight="bold" fill="white" text-anchor="middle">NFL</text>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/6rMzL2v.png" alt="NFL Mobile">
           <h3 class="game-title">NFL Mobile</h3>
           <p class="game-desc">Fast-paced football action</p>
           <div class="game-rating">
@@ -436,10 +426,7 @@
 
         <!-- Game 5: Mortal Kombat Mobile -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="15" width="44" height="30" rx="8" fill="#a00"/>
-            <text x="30" y="38" font-size="18" font-weight="bold" fill="yellow" text-anchor="middle">MK</text>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/1wO0fVb.png" alt="Mortal Kombat Mobile">
           <h3 class="game-title">Mortal Kombat Mobile</h3>
           <p class="game-desc">Brutal fighting gameplay</p>
           <div class="game-rating">
@@ -454,11 +441,7 @@
 
         <!-- Game 6: Street Fighter Mobile -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="25" fill="#c83"/>
-            <text x="30" y="34" font-size="14" font-weight="bold" fill="white" text-anchor="middle">SF</text>
-            <text x="30" y="48" font-size="10" fill="white" text-anchor="middle">Mobile</text>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/0qX9ZtP.png" alt="Street Fighter Mobile">
           <h3 class="game-title">Street Fighter Mobile</h3>
           <p class="game-desc">Legendary fighter reimagined</p>
           <div class="game-rating">
@@ -471,10 +454,7 @@
 
         <!-- Game 7: Clash Royale -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="10,50 30,10 50,50" fill="#2a6e45"/>
-            <circle cx="30" cy="32" r="10" fill="#ffd700"/>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/8l2vQYF.png" alt="Clash Royale">
           <h3 class="game-title">Clash Royale</h3>
           <p class="game-desc">Real-time PvP battles</p>
           <div class="game-rating">
@@ -489,11 +469,7 @@
 
         <!-- Game 8: NBA25 -->
         <div class="game-item">
-          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="25" fill="#e31837"/>
-            <text x="30" y="36" font-size="16" font-weight="bold" fill="gold" text-anchor="middle">NBA</text>
-            <text x="30" y="50" font-size="10" fill="white" text-anchor="middle">25</text>
-          </svg>
+          <img class="game-icon" src="https://i.imgur.com/7jKqR9r.png" alt="NBA25">
           <h3 class="game-title">NBA25</h3>
           <p class="game-desc">Next-gen basketball action</p>
           <div class="game-rating">
