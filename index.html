@@ -130,85 +130,6 @@
       }
     }
 
-    /* === 3D VAULT CONTAINER === */
-    #vault-container {
-      width: 100%;
-      height: 300px;
-      margin: 1.5rem 0;
-      position: relative;
-    }
-
-    #vault-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    #vault-glow {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(0,255,255,0.15) 0%, transparent 70%);
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.8s;
-    }
-
-    /* === CTA BUTTON === */
-    .cta-btn {
-      background: linear-gradient(90deg, #00FFFF, #B980F0);
-      color: #121212;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-    }
-
-    body.light-mode .cta-btn {
-      background: linear-gradient(90deg, #0088aa, #8a5bcf);
-      color: white;
-      box-shadow: 0 0 20px rgba(0, 120, 170, 0.3);
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-    }
-
-    .cta-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50px;
-      border: 2px solid transparent;
-      background: linear-gradient(90deg, #00FFFF, #B980F0) border-box;
-      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-              mask-composite: exclude;
-      pointer-events: none;
-      opacity: 0;
-      animation: pulse-border 2s infinite;
-    }
-
-    body.light-mode .cta-btn::after {
-      background: linear-gradient(90deg, #0088aa, #8a5bcf) border-box;
-    }
-
-    @keyframes pulse-border {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-
     /* === LIVE COUNTER === */
     .live-counter {
       font-size: 1.1rem;
@@ -217,313 +138,137 @@
       font-weight: 500;
     }
 
-    /* === HOW IT WORKS === */
-    .steps {
-      padding: 5rem 0;
+    /* === GAMES GRID === */
+    .mobile-games {
+      padding: 4rem 0;
       text-align: center;
     }
 
-    .step-grid {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 3rem;
-      flex-wrap: wrap;
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .step {
-      flex: 1;
-      min-width: 250px;
+    .game-item {
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
       padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      opacity: 0;
-      transform: translateY(30px);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    body.light-mode .step {
-      background: rgba(0, 0, 0, 0.05);
+    .game-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
     }
 
-    .step.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.6s ease;
+    .game-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
     }
 
-    .step-icon {
-      font-size: 2.5rem;
+    .game-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: #B980F0;
       margin-bottom: 1rem;
     }
 
-    /* === GAMES SECTION === */
-    .games {
-      padding: 5rem 0;
-      text-align: center;
+    .download-btn {
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      color: #121212;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
     }
 
-    .game-carousel {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      padding: 2rem 0;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
     }
 
-    .game-carousel::-webkit-scrollbar {
+    /* === DOWNLOAD PROGRESS === */
+    .progress-container {
       display: none;
+      max-width: 500px;
+      margin: 2rem auto;
+      text-align: center;
     }
 
-    .game-card {
-      min-width: 220px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
+    .status-text {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #00FFFF;
+    }
+
+    .progress-bar-outer {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
       overflow: hidden;
     }
 
-    body.light-mode .game-card {
-      background: rgba(0, 0, 0, 0.08);
-      border: 1px solid #ddd;
+    .progress-bar-inner {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      border-radius: 3px;
+      transition: width 0.4s;
     }
 
-    .game-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.5s;
+    .progress-percent {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
     }
 
-    .game-card:hover::before {
-      opacity: 1;
-    }
-
-    .game-card:hover {
-      transform: translateY(-8px) rotateX(5deg);
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
-    }
-
-    .game-tag {
-      display: inline-block;
-      background: #B980F0;
-      color: #121212;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 50px;
-      margin-top: 0.5rem;
-    }
-
-    /* === PRIZES === */
-    .prizes {
-      padding: 5rem 0;
-      text-align: center;
-    }
-
-    .prize-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .prize-card {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    body.light-mode .prize-card {
-      background: rgba(0, 0, 0, 0.06);
-    }
-
-    .prize-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: scale(1.03);
-    }
-
-    /* === FINAL CTA & FORM === */
-    .final-cta {
-      padding: 5rem 0;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    body.light-mode .final-cta {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #00FFFF;
-      border: 2px solid #00FFFF;
-      padding: 0.8rem 2rem;
-    }
-
-    body.light-mode .btn-outline {
-      color: #0088aa;
-      border-color: #0088aa;
-    }
-
-    .email-form {
-      max-width: 500px;
-      margin: 1.5rem auto 0;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .email-form input {
-      flex: 1;
-      min-width: 200px;
-      padding: 0.8rem 1rem;
-      border-radius: 50px;
-      border: 1px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 1rem;
-    }
-
-    body.light-mode .email-form input {
-      background: #f0f0f0;
-      color: #121212;
-      border-color: #ccc;
-    }
-
-    .email-form button {
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      border: none;
-      background: #00FFFF;
-      color: #121212;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* === OS BUTTONS === */
-    .os-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
-    }
-
-    .os-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .os-android {
-      background: #3DDC84;
-      color: black;
-    }
-
-    .os-ios {
-      background: white;
-      color: #121212;
-    }
-
-    .os-pc {
-      background: #00FFFF;
-      color: #121212;
-    }
-
-    .os-btn:hover {
-      transform: translateY(-3px);
-    }
-
-    /* === MODALS === */
-    .leaderboard-modal, .privacy-modal {
+    /* === SUCCESS MESSAGE === */
+    .success-message {
       display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .leaderboard-content, .privacy-content {
-      background: #1a1a2e;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 16px;
-      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
       text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-      position: relative;
+      padding: 1.5rem;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid #00FFFF;
     }
 
-    .close-modal {
-      position: absolute;
-      top: 15px; right: 15px;
-      background: #ff5555;
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .leaderboard-table {
-      margin: 1.5rem auto;
-      width: 100%;
-      border-collapse: collapse;
-      color: #E0E0E0;
-    }
-
-    .leaderboard-table th {
+    .success-message h3 {
       color: #00FFFF;
-      padding: 0.8rem;
-      text-align: left;
+      margin-bottom: 0.5rem;
     }
 
-    .leaderboard-table td {
-      padding: 0.7rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    .launch-btn {
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      color: #121212;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin: 1rem auto;
+      display: inline-block;
+      cursor: pointer;
     }
 
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
-      .step-grid { flex-direction: column; align-items: center; }
       .hero p { font-size: 1.1rem; }
-      .email-form {
-        flex-direction: column;
-      }
-      .email-form input, .email-form button {
-        width: 100%;
-      }
-      .os-buttons {
-        flex-direction: column;
-        align-items: center;
+      .games-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
       }
     }
   </style>
@@ -538,141 +283,97 @@
     <div class="container">
       <h1>Unlock the Next Level – Download. Play. Win Real Rewards.</h1>
       <p>Join thousands of gamers accessing exclusive titles and competing for premium prizes. Your next play could be your big win.</p>
-
-      <!-- 3D Vault Animation -->
-      <div id="vault-container">
-        <canvas id="vault-canvas"></canvas>
-        <div id="vault-glow"></div>
-      </div>
-
-      <a href="#download" class="cta-btn">🔓 Access Games Now</a>
-
-      <!-- LIVE COUNTER -->
       <div class="live-counter" id="playerCounter">Join <span>0</span>+ players this week</div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="steps container">
-    <h2>How It Works</h2>
-    <div class="step-grid">
-      <div class="step" id="step1">
-        <div class="step-icon">🎮</div>
-        <h3>Download & Install</h3>
-        <p>Get the latest titles optimized for performance and seamless gameplay.</p>
-      </div>
-      <div class="step" id="step2">
-        <div class="step-icon">🏆</div>
-        <h3>Play & Engage</h3>
-        <p>Reach milestones and level up your activity to earn prize entries.</p>
-      </div>
-      <div class="step" id="step3">
-        <div class="step-icon">🎁</div>
-        <h3>Win & Claim</h3>
-        <p>Get rewarded with real prizes based on your participation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GAMES -->
-  <section class="games container">
-    <h2>Featured Games</h2>
-    <div class="game-carousel">
-      <div class="game-card">
-        <h3>Nexus Strike</h3>
-        <p>Action RPG</p>
-        <span class="game-tag">Reward-Ready</span>
-      </div>
-      <div class="game-card">
-        <h3>Velocity Drift</h3>
-        <p>Racing Simulator</p>
-        <span class="game-tag">Reward-Ready</span>
-      </div>
-      <div class="game-card">
-        <h3>Shadow Arena</h3>
-        <p>Battle Royale</p>
-        <span class="game-tag">Reward-Ready</span>
-      </div>
-      <div class="game-card">
-        <h3>Galaxy Tactics</h3>
-        <p>Strategy MMO</p>
-        <span class="game-tag">Reward-Ready</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRIZES -->
-  <section class="prizes container">
-    <h2>What Could You Win?</h2>
-    <div class="prize-grid">
-      <div class="prize-card" onclick="openLeaderboard()">
-        <h3>🎮 Gaming Headset</h3>
-        <p>Top-tier audio for immersive play</p>
-      </div>
-      <div class="prize-card" onclick="openLeaderboard()">
-        <h3>💳 $100 Gift Card</h3>
-        <p>Redeem on Steam, Amazon, or PSN</p>
-      </div>
-      <div class="prize-card" onclick="openLeaderboard()">
-        <h3>💻 Gaming Laptop</h3>
-        <p>Monthly Grand Prize</p>
-      </div>
-      <div class="prize-card" onclick="openLeaderboard()">
-        <h3>👕 Limited Merch</h3>
-        <p>Exclusive GameVault gear</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="download">
+  <!-- MOBILE GAMES GRID -->
+  <section class="mobile-games">
     <div class="container">
-      <h2>Ready to Level Up Your Game?</h2>
-      <p style="max-width: 700px; margin: 1rem auto;">Download. Play. Earn your shot at weekly rewards. No tricks – just real prizes for real players.</p>
+      <h2>Play Top Mobile Games</h2>
+      <div class="games-grid">
+        <!-- Game 1 -->
+        <div class="game-item">
+          <div class="game-icon">🚗💥</div>
+          <h3 class="game-title">GTA: San Andreas</h3>
+          <p class="game-desc">Classic open-world action</p>
+          <button class="download-btn" onclick="startDownload('GTA San Andreas')">Download</button>
+        </div>
 
-      <!-- Email Form -->
-      <form action="https://yourcompany.us1.list-manage.com/subscribe/post?u=XXXX&id=XXXX" method="post" class="email-form" target="_blank">
-        <input type="email" name="EMAIL" placeholder="Enter your email" required />
-        <button type="submit">Get Access</button>
-      </form>
+        <!-- Game 2 -->
+        <div class="game-item">
+          <div class="game-icon">🔫🎯</div>
+          <h3 class="game-title">Valorant Mobile</h3>
+          <p class="game-desc">Tactical FPS on mobile</p>
+          <button class="download-btn" onclick="startDownload('Valorant Mobile')">Download</button>
+        </div>
 
-      <!-- OS-Specific Buttons -->
-      <div class="os-buttons" id="osButtons">
-        <!-- Will be filled by JS -->
+        <!-- Game 3 -->
+        <div class="game-item">
+          <div class="game-icon">⚾🔥</div>
+          <h3 class="game-title">Baseball 9</h3>
+          <p class="game-desc">Arcade baseball fun</p>
+          <button class="download-btn" onclick="startDownload('Baseball 9')">Download</button>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="game-item">
+          <div class="game-icon">🏈💥</div>
+          <h3 class="game-title">NFL Mobile</h3>
+          <p class="game-desc">Fast-paced football action</p>
+          <button class="download-btn" onclick="startDownload('NFL Mobile')">Download</button>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="game-item">
+          <div class="game-icon">💀🥋</div>
+          <h3 class="game-title">Mortal Kombat Mobile</h3>
+          <p class="game-desc">Brutal fighting gameplay</p>
+          <button class="download-btn" onclick="startDownload('Mortal Kombat Mobile')">Download</button>
+        </div>
+
+        <!-- Game 6 -->
+        <div class="game-item">
+          <div class="game-icon">🥋🔥</div>
+          <h3 class="game-title">Street Fighter Mobile</h3>
+          <p class="game-desc">Legendary fighter reimagined</p>
+          <button class="download-btn" onclick="startDownload('Street Fighter Mobile')">Download</button>
+        </div>
+
+        <!-- Game 7 -->
+        <div class="game-item">
+          <div class="game-icon">🏰⚔️</div>
+          <h3 class="game-title">Clash Royale</h3>
+          <p class="game-desc">Real-time PvP battles</p>
+          <button class="download-btn" onclick="startDownload('Clash Royale')">Download</button>
+        </div>
+
+        <!-- Game 8 -->
+        <div class="game-item">
+          <div class="game-icon">🏀🔥</div>
+          <h3 class="game-title">NBA25</h3>
+          <p class="game-desc">Next-gen basketball action</p>
+          <button class="download-btn" onclick="startDownload('NBA25')">Download</button>
+        </div>
       </div>
+    </div>
 
-      <p style="font-size: 0.9rem; margin-top: 1rem;">
-        <a href="#" onclick="openPrivacyModal(); return false;">Privacy Policy</a> | No spam. Unsubscribe anytime.
-      </p>
+    <!-- PROGRESS CONTAINER (Hidden) -->
+    <div class="progress-container" id="progressContainer">
+      <p class="status-text" id="statusText">Preparing game files...</p>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar"></div>
+      </div>
+      <p class="progress-percent" id="progressPercent">0%</p>
+    </div>
+
+    <!-- SUCCESS MESSAGE (Hidden) -->
+    <div class="success-message" id="successMessage">
+      <h3>🎉 Game Ready!</h3>
+      <p id="successGameName">Your game is ready to play.</p>
+      <div class="launch-btn" onclick="launchGame()">Launch Game</div>
     </div>
   </section>
-
-  <!-- LEADERBOARD MODAL -->
-  <div class="leaderboard-modal" id="leaderboardModal">
-    <div class="leaderboard-content">
-      <h2>🏆 This Week's Winners</h2>
-      <table class="leaderboard-table">
-        <tr><th>Rank</th><th>Player</th><th>Prize</th></tr>
-        <tr><td>1st</td><td>Alex_Gamer99</td><td>$200 Gift Card</td></tr>
-        <tr><td>2nd</td><td>NinjaPulse</td><td>Gaming Headset</td></tr>
-        <tr><td>3rd</td><td>ShadowByte</td><td>Steam $100</td></tr>
-      </table>
-      <button class="cta-btn" onclick="document.getElementById('leaderboardModal').style.display='none'">Keep Playing</button>
-      <div class="close-modal" onclick="document.getElementById('leaderboardModal').style.display='none'">×</div>
-    </div>
-  </div>
-
-  <!-- PRIVACY MODAL -->
-  <div class="privacy-modal" id="privacyModal">
-    <div class="privacy-content">
-      <h3>Privacy & Fair Play</h3>
-      <p>Your email is used only to deliver game access and prize updates.</p>
-      <p>We do not share data with third parties. Participation is free and optional.</p>
-      <p>Prizes are awarded via random draw among qualified players.</p>
-      <button class="cta-btn" onclick="document.getElementById('privacyModal').style.display='none'">Got It</button>
-      <div class="close-modal" onclick="document.getElementById('privacyModal').style.display='none'">×</div>
-    </div>
-  </div>
 
   <!-- SCRIPTS -->
   <script>
@@ -684,21 +385,10 @@
       toggle.textContent = body.classList.contains('light-mode') ? '◑' : '◐';
     });
 
-    // === Scroll Animations ===
-    const steps = document.querySelectorAll('.step');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    steps.forEach(step => observer.observe(step));
-
     // === Live Counter Animation ===
     const counterEl = document.getElementById('playerCounter').querySelector('span');
-    let count = 980; // Starting number
-    const target = 1247 + Math.floor(Math.random() * 100); // Random ending
+    let count = 980;
+    const target = 1247 + Math.floor(Math.random() * 100);
 
     const counterInterval = setInterval(() => {
       count++;
@@ -709,137 +399,78 @@
           const extra = setInterval(() => {
             count++;
             counterEl.textContent = count.toLocaleString();
-          }, 8000 + Math.random() * 2000); // Random increment every 8–10 sec
+          }, 8000 + Math.random() * 2000);
         }, 2000);
       }
-    }, 50); // Fast initial animation
+    }, 50);
 
-    // === Device Detection & OS Buttons ===
-    const osButtons = document.getElementById('osButtons');
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // === Device Detection ===
+    function getDevice() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(userAgent)) return 'Android';
+      if (/iPad|iPhone|iPod/.test(userAgent)) return 'iOS';
+      return 'Windows';
+    }
 
-    let os = 'pc';
-    if (/android/i.test(userAgent)) os = 'android';
-    else if (/iPad|iPhone|iPod/.test(userAgent)) os = 'ios';
+    // === Download Flow ===
+    let currentGame = '';
 
-    const buttons = {
-      android: `<a href="#download" class="os-btn os-android">📱 Android App</a>`,
-      ios: `<a href="#download" class="os-btn os-ios">📱 iOS App</a>`,
-      pc: `<a href="#download" class="os-btn os-pc">💻 Windows Download</a>`
-    };
+    function startDownload(gameName) {
+      currentGame = gameName;
 
-    osButtons.innerHTML = buttons[os];
-
-    // === Leaderboard & Privacy Modals ===
-    function openLeaderboard() { document.getElementById('leaderboardModal').style.display = 'flex'; }
-    function openPrivacyModal() { document.getElementById('privacyModal').style.display = 'flex'; }
-
-    window.onclick = function(event) {
-      if (event.target.classList.contains('leaderboard-modal') || event.target.classList.contains('privacy-modal')) {
-        event.target.style.display = 'none';
-      }
-    };
-
-    // === 3D VAULT ANIMATION ===
-    document.addEventListener("DOMContentLoaded", () => {
-      const container = document.getElementById('vault-container');
-      const canvas = document.getElementById('vault-canvas');
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
-      camera.position.set(0, 0, 5);
-
-      const glassMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x001122,
-        metalness: 0.2,
-        roughness: 0.1,
-        transparent: true,
-        opacity: 0.8,
-        transmission: 0.7,
-        clearcoat: 1,
-        clearcoatRoughness: 0.2,
-        envMapIntensity: 1.5,
-        reflectivity: 1,
-        ior: 1.5,
-        side: THREE.DoubleSide
+      // Hide all games
+      document.querySelectorAll('.game-item').forEach(el => {
+        el.style.display = 'none';
       });
+      document.querySelector('.games-grid').style.marginBottom = '2rem';
 
-      const edgeGlow = new THREE.MeshBasicMaterial({
-        color: 0x00FFFF,
-        transparent: true,
-        opacity: 0.6
-      });
+      // Show progress
+      document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('statusText').textContent = `Preparing ${gameName}...`;
 
-      const doorMaterial = new THREE.MeshStandardMaterial({
-        color: 0x111122,
-        metalness: 0.8,
-        roughness: 0.2
-      });
+      const progressBar = document.getElementById('progressBar');
+      const progressPercent = document.getElementById('progressPercent');
+      let width = 0;
 
-      const vaultGeometry = new THREE.BoxGeometry(2, 1.5, 1.5);
-      const vault = new THREE.Group();
-      const body = new THREE.Mesh(vaultGeometry, glassMaterial);
-      const edges = new THREE.EdgesGeometry(vaultGeometry, 10);
-      const line = new THREE.LineSegments(edges, edgeGlow);
-      vault.add(body, line);
+      const steps = [
+        { pct: 20, text: "Optimizing for your device..." },
+        { pct: 45, text: "Securing access..." },
+        { pct: 70, text: "Finalizing setup..." },
+        { pct: 100, text: "Ready to play!" }
+      ];
 
-      const doorGeometry = new THREE.BoxGeometry(0.05, 0.7, 1.45);
-      const leftDoor = new THREE.Mesh(doorGeometry, doorMaterial);
-      const rightDoor = new THREE.Mesh(doorGeometry, doorMaterial);
-      leftDoor.position.set(-0.98, 0, 0);
-      rightDoor.position.set(0.98, 0, 0);
-      vault.add(leftDoor, rightDoor);
+      let stepIndex = 0;
 
-      scene.add(vault);
+      const interval = setInterval(() => {
+        width += 0.8;
+        progressBar.style.width = `${Math.min(width, 100)}%`;
+        progressPercent.textContent = `${Math.round(width)}%`;
 
-      scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-      const spotLight = new THREE.SpotLight(0x00FFFF, 1, 10, Math.PI / 6);
-      spotLight.position.set(3, 3, 3);
-      spotLight.target = vault;
-      scene.add(spotLight);
-      scene.add(spotLight.target);
-
-      let open = false;
-      let targetOpen = false;
-      let time = 0;
-
-      setTimeout(() => { targetOpen = true; document.getElementById('vault-glow').style.opacity = 1; }, 3000);
-      container.addEventListener('mouseenter', () => { targetOpen = true; document.getElementById('vault-glow').style.opacity = 1; });
-      container.addEventListener('mouseleave', () => { targetOpen = false; document.getElementById('vault-glow').style.opacity = 0; });
-
-      window.addEventListener('resize', () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        time += 0.01;
-        vault.rotation.y = Math.sin(time * 0.5) * 0.1;
-        vault.rotation.x = Math.sin(time * 0.3) * 0.05;
-
-        if (targetOpen && !open) {
-          leftDoor.rotation.y = Math.max(leftDoor.rotation.y - 0.03, -Math.PI/2);
-          rightDoor.rotation.y = Math.min(rightDoor.rotation.y + 0.03, Math.PI/2);
-          if (leftDoor.rotation.y <= -Math.PI/2 + 0.1) open = true;
-        } else if (!targetOpen && open) {
-          leftDoor.rotation.y = Math.min(leftDoor.rotation.y + 0.03, 0);
-          rightDoor.rotation.y = Math.max(rightDoor.rotation.y - 0.03, 0);
-          if (leftDoor.rotation.y >= -0.01) open = false;
+        if (stepIndex < steps.length && width >= steps[stepIndex].pct) {
+          document.getElementById('statusText').textContent = steps[stepIndex].text;
+          stepIndex++;
         }
 
-        renderer.render(scene, camera);
-      }
-      animate();
-    });
-  </script>
+        if (width >= 100) {
+          clearInterval(interval);
+          document.getElementById('progressContainer').style.display = 'none';
+          document.getElementById('successGameName').textContent = `${currentGame} is ready to play on your ${getDevice()} device.`;
+          document.getElementById('successMessage').style.display = 'block';
+        }
+      }, 70);
+    }
 
-  <!-- Three.js Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    // Launch Game
+    function launchGame() {
+      const launchBtn = document.querySelector('.launch-btn');
+      launchBtn.textContent = 'Launching...';
+      setTimeout(() => {
+        alert(`Welcome to ${currentGame}! Your prize eligibility has been activated.`);
+        // Simulate launch
+        window.location.href = 'https://example.com/thank-you';
+      }, 1500);
+    }
+  </script>
 
 </body>
 </html>
