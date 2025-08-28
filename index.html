@@ -9,9 +9,6 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Lottie (Optional) -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
   <style>
     /* === RESET & BASE STYLES === */
     * {
@@ -102,7 +99,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMTAgNSAxNSAxMCAxMCAxNSAxNSAyMCAxMCAyMCAwIDE1IDUgMTAgMCA1IDUgMCAwIDAgMTAiIGZpbGw9IiMwMDAwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMTAgNSAxNSAxMCAxMCAxNSAxNSAyMCAxMCAyMCAwIDE1IDUgMTAgMCA1IDUgMCAwIDAgMTAiIGZpbGw9IiMwMDAwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
       opacity: 0.1;
       z-index: -1;
     }
@@ -168,9 +165,48 @@
     }
 
     .game-icon {
-      font-size: 3.5rem;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 0.8rem;
+    }
+
+    .game-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: #B980F0;
+      margin-bottom: 1rem;
+    }
+
+    /* === RATINGS & DOWNLOADS === */
+    .game-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      justify-content: center;
+    }
+
+    .stars {
+      color: #FFD700;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+
+    .rating-label {
+      color: #B980F0;
+      font-weight: 600;
+    }
+
+    .game-downloads {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
       margin-bottom: 0.8rem;
-      position: relative;
+      font-weight: 500;
     }
 
     /* === VERIFIED BADGE === */
@@ -216,46 +252,7 @@
       opacity: 1;
     }
 
-    .game-title {
-      font-size: 1.4rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .game-desc {
-      font-size: 0.95rem;
-      color: #B980F0;
-      margin-bottom: 1rem;
-    }
-
-    /* === RATINGS & DOWNLOADS === */
-    .game-rating {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      justify-content: center;
-    }
-
-    .stars {
-      color: #FFD700;
-      font-size: 1rem;
-      font-family: 'Arial', sans-serif;
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
-    }
-
-    .rating-label {
-      color: #B980F0;
-      font-weight: 600;
-    }
-
-    .game-downloads {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 0.8rem;
-      font-weight: 500;
-    }
-
+    /* === DOWNLOAD BUTTON === */
     .download-btn {
       background: linear-gradient(90deg, #00FFFF, #B980F0);
       color: #121212;
@@ -370,9 +367,13 @@
     <div class="container">
       <h2>Play Top Mobile Games</h2>
       <div class="games-grid">
-        <!-- Game 1 -->
+        <!-- Game 1: GTA San Andreas -->
         <div class="game-item">
-          <div class="game-icon">🚗💥</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <rect width="60" height="60" rx="12" fill="#123" />
+            <text x="30" y="38" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="red" text-anchor="middle">GTA</text>
+            <text x="30" y="52" font-size="10" fill="white" text-anchor="middle">San Andreas</text>
+          </svg>
           <h3 class="game-title">GTA: San Andreas</h3>
           <p class="game-desc">Classic open-world action</p>
           <div class="game-rating">
@@ -383,9 +384,12 @@
           <button class="download-btn" onclick="startDownload('GTA San Andreas')">Download</button>
         </div>
 
-        <!-- Game 2 -->
+        <!-- Game 2: Valorant Mobile -->
         <div class="game-item">
-          <div class="game-icon">🔫🎯</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="30,10 10,50 50,50" fill="#d32f2f"/>
+            <circle cx="30" cy="30" r="10" fill="#fff"/>
+          </svg>
           <h3 class="game-title">Valorant Mobile</h3>
           <p class="game-desc">Tactical FPS on mobile</p>
           <div class="game-rating">
@@ -398,9 +402,12 @@
           <button class="download-btn" onclick="startDownload('Valorant Mobile')">Download</button>
         </div>
 
-        <!-- Game 3 -->
+        <!-- Game 3: Baseball 9 -->
         <div class="game-item">
-          <div class="game-icon">⚾🔥</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#f9d784" stroke="#d4a76a" stroke-width="2"/>
+            <path d="M15 30 Q30 10 45 30 Q30 50 15 30" fill="none" stroke="#d4a76a" stroke-width="2"/>
+          </svg>
           <h3 class="game-title">Baseball 9</h3>
           <p class="game-desc">Arcade baseball fun</p>
           <div class="game-rating">
@@ -411,9 +418,12 @@
           <button class="download-btn" onclick="startDownload('Baseball 9')">Download</button>
         </div>
 
-        <!-- Game 4 -->
+        <!-- Game 4: NFL Mobile -->
         <div class="game-item">
-          <div class="game-icon">🏈💥</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20 L50 20 L45 40 L15 40 Z" fill="#002169"/>
+            <text x="30" y="35" font-size="10" font-weight="bold" fill="white" text-anchor="middle">NFL</text>
+          </svg>
           <h3 class="game-title">NFL Mobile</h3>
           <p class="game-desc">Fast-paced football action</p>
           <div class="game-rating">
@@ -424,9 +434,12 @@
           <button class="download-btn" onclick="startDownload('NFL Mobile')">Download</button>
         </div>
 
-        <!-- Game 5 -->
+        <!-- Game 5: Mortal Kombat Mobile -->
         <div class="game-item">
-          <div class="game-icon">💀🥋</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="15" width="44" height="30" rx="8" fill="#a00"/>
+            <text x="30" y="38" font-size="18" font-weight="bold" fill="yellow" text-anchor="middle">MK</text>
+          </svg>
           <h3 class="game-title">Mortal Kombat Mobile</h3>
           <p class="game-desc">Brutal fighting gameplay</p>
           <div class="game-rating">
@@ -439,9 +452,13 @@
           <button class="download-btn" onclick="startDownload('Mortal Kombat Mobile')">Download</button>
         </div>
 
-        <!-- Game 6 -->
+        <!-- Game 6: Street Fighter Mobile -->
         <div class="game-item">
-          <div class="game-icon">🥋🔥</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#c83"/>
+            <text x="30" y="34" font-size="14" font-weight="bold" fill="white" text-anchor="middle">SF</text>
+            <text x="30" y="48" font-size="10" fill="white" text-anchor="middle">Mobile</text>
+          </svg>
           <h3 class="game-title">Street Fighter Mobile</h3>
           <p class="game-desc">Legendary fighter reimagined</p>
           <div class="game-rating">
@@ -452,9 +469,12 @@
           <button class="download-btn" onclick="startDownload('Street Fighter Mobile')">Download</button>
         </div>
 
-        <!-- Game 7 -->
+        <!-- Game 7: Clash Royale -->
         <div class="game-item">
-          <div class="game-icon">🏰⚔️</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="10,50 30,10 50,50" fill="#2a6e45"/>
+            <circle cx="30" cy="32" r="10" fill="#ffd700"/>
+          </svg>
           <h3 class="game-title">Clash Royale</h3>
           <p class="game-desc">Real-time PvP battles</p>
           <div class="game-rating">
@@ -467,9 +487,13 @@
           <button class="download-btn" onclick="startDownload('Clash Royale')">Download</button>
         </div>
 
-        <!-- Game 8 -->
+        <!-- Game 8: NBA25 -->
         <div class="game-item">
-          <div class="game-icon">🏀🔥</div>
+          <svg class="game-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#e31837"/>
+            <text x="30" y="36" font-size="16" font-weight="bold" fill="gold" text-anchor="middle">NBA</text>
+            <text x="30" y="50" font-size="10" fill="white" text-anchor="middle">25</text>
+          </svg>
           <h3 class="game-title">NBA25</h3>
           <p class="game-desc">Next-gen basketball action</p>
           <div class="game-rating">
@@ -513,7 +537,6 @@
     const counterEl = document.getElementById('playerCounter').querySelector('span');
     let count = 980;
     const target = 1247 + Math.floor(Math.random() * 100);
-
     const counterInterval = setInterval(() => {
       count++;
       counterEl.textContent = count.toLocaleString();
@@ -528,27 +551,12 @@
       }
     }, 50);
 
-    // === Device Detection ===
-    function getDevice() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(userAgent)) return 'Android';
-      if (/iPad|iPhone|iPod/.test(userAgent)) return 'iOS';
-      return 'Windows';
-    }
-
     // === Download Flow ===
     let currentGame = '';
-
     function startDownload(gameName) {
       currentGame = gameName;
-
-      // Hide all games
-      document.querySelectorAll('.game-item').forEach(el => {
-        el.style.display = 'none';
-      });
+      document.querySelectorAll('.game-item').forEach(el => el.style.display = 'none');
       document.querySelector('.games-grid').style.marginBottom = '2rem';
-
-      // Show progress
       document.getElementById('progressContainer').style.display = 'block';
       document.getElementById('statusText').textContent = `Preparing ${gameName}...`;
 
@@ -564,30 +572,26 @@
       ];
 
       let stepIndex = 0;
-
       const interval = setInterval(() => {
         width += 0.8;
         progressBar.style.width = `${Math.min(width, 100)}%`;
         progressPercent.textContent = `${Math.round(width)}%`;
-
         if (stepIndex < steps.length && width >= steps[stepIndex].pct) {
           document.getElementById('statusText').textContent = steps[stepIndex].text;
           stepIndex++;
         }
-
         if (width >= 100) {
           clearInterval(interval);
           document.getElementById('progressContainer').style.display = 'none';
-          document.getElementById('successGameName').textContent = `${currentGame} is ready to play on your ${getDevice()} device.`;
+          document.getElementById('successGameName').textContent = `${currentGame} is ready to play on your device.`;
           document.getElementById('successMessage').style.display = 'block';
         }
       }, 70);
     }
 
-    // Launch Game
     function launchGame() {
-      const launchBtn = document.querySelector('.launch-btn');
-      launchBtn.textContent = 'Launching...';
+      const btn = document.querySelector('.launch-btn');
+      btn.textContent = 'Launching...';
       setTimeout(() => {
         alert(`Welcome to ${currentGame}! Your prize eligibility has been activated.`);
         window.location.href = 'https://example.com/thank-you';
