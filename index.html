@@ -1,129 +1,599 @@
-<!-- MOBILE GAMES GRID -->
-<section class="mobile-games">
-  <div class="container">
-    <h2>Play Top Mobile Games</h2>
-    <div class="games-grid">
-      <!-- Game 1 -->
-      <div class="game-item">
-        <div class="game-icon">🚗💥</div>
-        <h3 class="game-title">GTA: San Andreas</h3>
-        <p class="game-desc">Classic open-world action</p>
-        <!-- Rating -->
-        <div class="game-rating">
-          <div class="stars">★★★★☆</div>
-          <span class="rating-label">4.0</span>
-        </div>
-        <!-- Downloads -->
-        <div class="game-downloads">1.2M+ downloads</div>
-        <button class="download-btn" onclick="startDownload('GTA San Andreas')">Download</button>
-      </div>
+<!DOCTYPE html>
+<html lang="en" id="page">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameVault – Play. Unlock. Win.</title>
+  <meta name="description" content="Download exclusive games and earn entries to win real prizes. Join thousands of players leveling up their gaming experience.">
 
-      <!-- Game 2 -->
-      <div class="game-item">
-        <div class="game-icon">🔫🎯</div>
-        <h3 class="game-title">Valorant Mobile</h3>
-        <p class="game-desc">Tactical FPS on mobile</p>
-        <div class="game-rating">
-          <div class="stars">★★★★★</div>
-          <span class="rating-label">5.0</span>
-        </div>
-        <div class="game-downloads">890K+ downloads</div>
-        <button class="download-btn" onclick="startDownload('Valorant Mobile')">Download</button>
-      </div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
-      <!-- Game 3 -->
-      <div class="game-item">
-        <div class="game-icon">⚾🔥</div>
-        <h3 class="game-title">Baseball 9</h3>
-        <p class="game-desc">Arcade baseball fun</p>
-        <div class="game-rating">
-          <div class="stars">★★★★★</div>
-          <span class="rating-label">5.0</span>
-        </div>
-        <div class="game-downloads">620K+ downloads</div>
-        <button class="download-btn" onclick="startDownload('Baseball 9')">Download</button>
-      </div>
+  <!-- Lottie (Optional) -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-      <!-- Game 4 -->
-      <div class="game-item">
-        <div class="game-icon">🏈💥</div>
-        <h3 class="game-title">NFL Mobile</h3>
-        <p class="game-desc">Fast-paced football action</p>
-        <div class="game-rating">
-          <div class="stars">★★★★☆</div>
-          <span class="rating-label">4.0</span>
-        </div>
-        <div class="game-downloads">510K+ downloads</div>
-        <button class="download-btn" onclick="startDownload('NFL Mobile')">Download</button>
-      </div>
+  <style>
+    /* === RESET & BASE STYLES === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background 0.4s, color 0.4s, opacity 0.4s;
+    }
 
-      <!-- Game 5 -->
-      <div class="game-item">
-        <div class="game-icon">💀🥋</div>
-        <h3 class="game-title">Mortal Kombat Mobile</h3>
-        <p class="game-desc">Brutal fighting gameplay</p>
-        <div class="game-rating">
-          <div class="stars">★★★★★</div>
-          <span class="rating-label">5.0</span>
-        </div>
-        <div class="game-downloads">1.5M+ downloads</div>
-        <button class="download-btn" onclick="startDownload('Mortal Kombat Mobile')">Download</button>
-      </div>
+    body {
+      background: #121212;
+      color: #E0E0E0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-      <!-- Game 6 -->
-      <div class="game-item">
-        <div class="game-icon">🥋🔥</div>
-        <h3 class="game-title">Street Fighter Mobile</h3>
-        <p class="game-desc">Legendary fighter reimagined</p>
-        <div class="game-rating">
-          <div class="stars">★★★★½</div>
-          <span class="rating-label">4.5</span>
-        </div>
-        <div class="game-downloads">980K+ downloads</div>
-        <button class="download-btn" onclick="startDownload('Street Fighter Mobile')">Download</button>
-      </div>
+    body.light-mode {
+      background: #f8f9fa;
+      color: #121212;
+    }
 
-      <!-- Game 7 -->
-      <div class="game-item">
-        <div class="game-icon">🏰⚔️</div>
-        <h3 class="game-title">Clash Royale</h3>
-        <p class="game-desc">Real-time PvP battles</p>
-        <div class="game-rating">
-          <div class="stars">★★★★½</div>
-          <span class="rating-label">4.5</span>
-        </div>
-        <div class="game-downloads">2.1M+ downloads</div>
-        <button class="download-btn" onclick="startDownload('Clash Royale')">Download</button>
-      </div>
+    h1, h2, h3, h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
 
-      <!-- Game 8 -->
-      <div class="game-item">
-        <div class="game-icon">🏀🔥</div>
-        <h3 class="game-title">NBA25</h3>
-        <p class="game-desc">Next-gen basketball action</p>
-        <div class="game-rating">
-          <div class="stars">★★★★☆</div>
-          <span class="rating-label">4.0</span>
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.5rem; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === MODE TOGGLE === */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      font-size: 1.2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    body.light-mode .mode-toggle {
+      background: rgba(0,0,0,0.2);
+      color: #fff;
+    }
+
+    /* === HERO SECTION === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 70%, #000000 100%);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMTAgNSAxNSAxMCAxMCAxNSAxNSAyMCAxMCAyMCAwIDE1IDUgMTAgMCA1IDUgMCAwIDAgMTAiIGZpbGw9IiMwMDAwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.3s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === LIVE COUNTER === */
+    .live-counter {
+      font-size: 1.1rem;
+      color: #00FFFF;
+      margin: 0.5rem 0 1.5rem;
+      font-weight: 500;
+    }
+
+    /* === GAMES GRID === */
+    .mobile-games {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .game-item {
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .game-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
+    }
+
+    .game-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    /* === VERIFIED BADGE === */
+    .verified-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 22px;
+      height: 22px;
+      background: #00A3FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: white;
+      box-shadow: 0 0 8px rgba(0, 163, 255, 0.5);
+      z-index: 2;
+    }
+
+    .verified-badge::after {
+      content: '✓';
+      font-weight: bold;
+    }
+
+    .verified-tooltip {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00A3FF;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 10;
+    }
+
+    .verified-badge:hover + .verified-tooltip {
+      opacity: 1;
+    }
+
+    .game-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: #B980F0;
+      margin-bottom: 1rem;
+    }
+
+    /* === RATINGS & DOWNLOADS === */
+    .game-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      justify-content: center;
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 1rem;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+
+    .rating-label {
+      color: #B980F0;
+      font-weight: 600;
+    }
+
+    .game-downloads {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    .download-btn {
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      color: #121212;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+
+    /* === DOWNLOAD PROGRESS === */
+    .progress-container {
+      display: none;
+      max-width: 500px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .status-text {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #00FFFF;
+    }
+
+    .progress-bar-outer {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar-inner {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      border-radius: 3px;
+      transition: width 0.4s;
+    }
+
+    .progress-percent {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
+    }
+
+    /* === SUCCESS MESSAGE === */
+    .success-message {
+      display: none;
+      max-width: 500px;
+      margin: 2rem auto;
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid #00FFFF;
+    }
+
+    .success-message h3 {
+      color: #00FFFF;
+      margin-bottom: 0.5rem;
+    }
+
+    .launch-btn {
+      background: linear-gradient(90deg, #00FFFF, #B980F0);
+      color: #121212;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin: 1rem auto;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .games-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+      .verified-tooltip {
+        font-size: 0.75rem;
+        bottom: -28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MODE TOGGLE -->
+  <div class="mode-toggle" id="modeToggle">◐</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Unlock the Next Level – Download. Play. Win Real Rewards.</h1>
+      <p>Join thousands of gamers accessing exclusive titles and competing for premium prizes. Your next play could be your big win.</p>
+      <div class="live-counter" id="playerCounter">Join <span>0</span>+ players this week</div>
+    </div>
+  </section>
+
+  <!-- MOBILE GAMES GRID -->
+  <section class="mobile-games">
+    <div class="container">
+      <h2>Play Top Mobile Games</h2>
+      <div class="games-grid">
+        <!-- Game 1 -->
+        <div class="game-item">
+          <div class="game-icon">🚗💥</div>
+          <h3 class="game-title">GTA: San Andreas</h3>
+          <p class="game-desc">Classic open-world action</p>
+          <div class="game-rating">
+            <div class="stars">★★★★☆</div>
+            <span class="rating-label">4.0</span>
+          </div>
+          <div class="game-downloads">1.2M+ downloads</div>
+          <button class="download-btn" onclick="startDownload('GTA San Andreas')">Download</button>
         </div>
-        <div class="game-downloads">740K+ downloads</div>
-        <button class="download-btn" onclick="startDownload('NBA25')">Download</button>
+
+        <!-- Game 2 -->
+        <div class="game-item">
+          <div class="game-icon">🔫🎯</div>
+          <h3 class="game-title">Valorant Mobile</h3>
+          <p class="game-desc">Tactical FPS on mobile</p>
+          <div class="game-rating">
+            <div class="stars">★★★★★</div>
+            <span class="rating-label">5.0</span>
+          </div>
+          <div class="game-downloads">890K+ downloads</div>
+          <div class="verified-badge"></div>
+          <div class="verified-tooltip">Officially Verified</div>
+          <button class="download-btn" onclick="startDownload('Valorant Mobile')">Download</button>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-item">
+          <div class="game-icon">⚾🔥</div>
+          <h3 class="game-title">Baseball 9</h3>
+          <p class="game-desc">Arcade baseball fun</p>
+          <div class="game-rating">
+            <div class="stars">★★★★★</div>
+            <span class="rating-label">5.0</span>
+          </div>
+          <div class="game-downloads">620K+ downloads</div>
+          <button class="download-btn" onclick="startDownload('Baseball 9')">Download</button>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="game-item">
+          <div class="game-icon">🏈💥</div>
+          <h3 class="game-title">NFL Mobile</h3>
+          <p class="game-desc">Fast-paced football action</p>
+          <div class="game-rating">
+            <div class="stars">★★★★☆</div>
+            <span class="rating-label">4.0</span>
+          </div>
+          <div class="game-downloads">510K+ downloads</div>
+          <button class="download-btn" onclick="startDownload('NFL Mobile')">Download</button>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="game-item">
+          <div class="game-icon">💀🥋</div>
+          <h3 class="game-title">Mortal Kombat Mobile</h3>
+          <p class="game-desc">Brutal fighting gameplay</p>
+          <div class="game-rating">
+            <div class="stars">★★★★★</div>
+            <span class="rating-label">5.0</span>
+          </div>
+          <div class="game-downloads">1.5M+ downloads</div>
+          <div class="verified-badge"></div>
+          <div class="verified-tooltip">Officially Verified</div>
+          <button class="download-btn" onclick="startDownload('Mortal Kombat Mobile')">Download</button>
+        </div>
+
+        <!-- Game 6 -->
+        <div class="game-item">
+          <div class="game-icon">🥋🔥</div>
+          <h3 class="game-title">Street Fighter Mobile</h3>
+          <p class="game-desc">Legendary fighter reimagined</p>
+          <div class="game-rating">
+            <div class="stars">★★★★½</div>
+            <span class="rating-label">4.5</span>
+          </div>
+          <div class="game-downloads">980K+ downloads</div>
+          <button class="download-btn" onclick="startDownload('Street Fighter Mobile')">Download</button>
+        </div>
+
+        <!-- Game 7 -->
+        <div class="game-item">
+          <div class="game-icon">🏰⚔️</div>
+          <h3 class="game-title">Clash Royale</h3>
+          <p class="game-desc">Real-time PvP battles</p>
+          <div class="game-rating">
+            <div class="stars">★★★★½</div>
+            <span class="rating-label">4.5</span>
+          </div>
+          <div class="game-downloads">2.1M+ downloads</div>
+          <div class="verified-badge"></div>
+          <div class="verified-tooltip">Officially Verified</div>
+          <button class="download-btn" onclick="startDownload('Clash Royale')">Download</button>
+        </div>
+
+        <!-- Game 8 -->
+        <div class="game-item">
+          <div class="game-icon">🏀🔥</div>
+          <h3 class="game-title">NBA25</h3>
+          <p class="game-desc">Next-gen basketball action</p>
+          <div class="game-rating">
+            <div class="stars">★★★★☆</div>
+            <span class="rating-label">4.0</span>
+          </div>
+          <div class="game-downloads">740K+ downloads</div>
+          <button class="download-btn" onclick="startDownload('NBA25')">Download</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- PROGRESS CONTAINER (Hidden) -->
-  <div class="progress-container" id="progressContainer">
-    <p class="status-text" id="statusText">Preparing game files...</p>
-    <div class="progress-bar-outer">
-      <div class="progress-bar-inner" id="progressBar"></div>
+    <!-- PROGRESS CONTAINER -->
+    <div class="progress-container" id="progressContainer">
+      <p class="status-text" id="statusText">Preparing game files...</p>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar"></div>
+      </div>
+      <p class="progress-percent" id="progressPercent">0%</p>
     </div>
-    <p class="progress-percent" id="progressPercent">0%</p>
-  </div>
 
-  <!-- SUCCESS MESSAGE (Hidden) -->
-  <div class="success-message" id="successMessage">
-    <h3>🎉 Game Ready!</h3>
-    <p id="successGameName">Your game is ready to play.</p>
-    <div class="launch-btn" onclick="launchGame()">Launch Game</div>
-  </div>
-</section>
+    <!-- SUCCESS MESSAGE -->
+    <div class="success-message" id="successMessage">
+      <h3>🎉 Game Ready!</h3>
+      <p id="successGameName">Your game is ready to play.</p>
+      <div class="launch-btn" onclick="launchGame()">Launch Game</div>
+    </div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <script>
+    // === Dark/Light Mode Toggle ===
+    const toggle = document.getElementById('modeToggle');
+    const body = document.body;
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      toggle.textContent = body.classList.contains('light-mode') ? '◑' : '◐';
+    });
+
+    // === Live Counter Animation ===
+    const counterEl = document.getElementById('playerCounter').querySelector('span');
+    let count = 980;
+    const target = 1247 + Math.floor(Math.random() * 100);
+
+    const counterInterval = setInterval(() => {
+      count++;
+      counterEl.textContent = count.toLocaleString();
+      if (count >= target) {
+        clearInterval(counterInterval);
+        setTimeout(() => {
+          const extra = setInterval(() => {
+            count++;
+            counterEl.textContent = count.toLocaleString();
+          }, 8000 + Math.random() * 2000);
+        }, 2000);
+      }
+    }, 50);
+
+    // === Device Detection ===
+    function getDevice() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(userAgent)) return 'Android';
+      if (/iPad|iPhone|iPod/.test(userAgent)) return 'iOS';
+      return 'Windows';
+    }
+
+    // === Download Flow ===
+    let currentGame = '';
+
+    function startDownload(gameName) {
+      currentGame = gameName;
+
+      // Hide all games
+      document.querySelectorAll('.game-item').forEach(el => {
+        el.style.display = 'none';
+      });
+      document.querySelector('.games-grid').style.marginBottom = '2rem';
+
+      // Show progress
+      document.getElementById('progressContainer').style.display = 'block';
+      document.getElementById('statusText').textContent = `Preparing ${gameName}...`;
+
+      const progressBar = document.getElementById('progressBar');
+      const progressPercent = document.getElementById('progressPercent');
+      let width = 0;
+
+      const steps = [
+        { pct: 20, text: "Optimizing for your device..." },
+        { pct: 45, text: "Securing access..." },
+        { pct: 70, text: "Finalizing setup..." },
+        { pct: 100, text: "Ready to play!" }
+      ];
+
+      let stepIndex = 0;
+
+      const interval = setInterval(() => {
+        width += 0.8;
+        progressBar.style.width = `${Math.min(width, 100)}%`;
+        progressPercent.textContent = `${Math.round(width)}%`;
+
+        if (stepIndex < steps.length && width >= steps[stepIndex].pct) {
+          document.getElementById('statusText').textContent = steps[stepIndex].text;
+          stepIndex++;
+        }
+
+        if (width >= 100) {
+          clearInterval(interval);
+          document.getElementById('progressContainer').style.display = 'none';
+          document.getElementById('successGameName').textContent = `${currentGame} is ready to play on your ${getDevice()} device.`;
+          document.getElementById('successMessage').style.display = 'block';
+        }
+      }, 70);
+    }
+
+    // Launch Game
+    function launchGame() {
+      const launchBtn = document.querySelector('.launch-btn');
+      launchBtn.textContent = 'Launching...';
+      setTimeout(() => {
+        alert(`Welcome to ${currentGame}! Your prize eligibility has been activated.`);
+        window.location.href = 'https://example.com/thank-you';
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
